@@ -2,7 +2,7 @@
 
 namespace Movilizame\Queue;
 
-use Barryvdh\Queue\Connectors\HttpConnector;
+use Movilizame\Queue\Connectors\HttpConnector;
 use Illuminate\Support\ServiceProvider;
 
 class HttpServiceProvider extends ServiceProvider
