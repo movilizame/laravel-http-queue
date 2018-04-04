@@ -18,7 +18,7 @@ class HttpConnector implements ConnectorInterface
     public function connect(array $config)
     {
         return new HttpQueue(
-			$config['host'],
+			$config['host']
 		);
     }
 }
