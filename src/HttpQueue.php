@@ -1,9 +1,10 @@
 <?php
 namespace Movilizame\Queue;
 
-use Illuminate\Queue\Queue; 
+use Illuminate\Queue\Queue;  
+use Illuminate\Contracts\Queue\Queue as QueueContract;
 
-class HttpQueue extends Queue
+class HttpQueue extends Queue implements QueueContract
 {
     /**
      * @var string
@@ -31,7 +32,7 @@ class HttpQueue extends Queue
     public function push($job, $data = '', $queue = null)
     {
         $payload = $this->createPayload($job, $data);
-        $client = new GuzzleHttp\Client();
+        $client = new \GuzzleHttp\Client();
         $res = $client->post($this->host, ['queue' => ($queue ? $queue : 'default'), 'data' => $payload] );
     }
     
@@ -63,4 +64,7 @@ class HttpQueue extends Queue
 
     }
  
+    public function pop($queue = null) {
+        //
+    }
 }
